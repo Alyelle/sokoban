@@ -43,18 +43,22 @@ public class LevelManager : MonoBehaviour
         {
             if (sceneName == "Level1")
             {
-                buttonsPressed = 0;
+                //buttonsPressed = 0;
                 SceneManager.LoadScene("Level2");
             }
             else if (sceneName == "Level2")
             {
-                buttonsPressed = 0;
+                //buttonsPressed = 0;
                 SceneManager.LoadScene("Level3");
             }
             else if (sceneName == "Level3")
             {
                 //call function to restart game
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            SceneManager.LoadScene(currentScene.name);
         }
 
     }
