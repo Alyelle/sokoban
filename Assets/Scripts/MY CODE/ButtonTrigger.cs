@@ -3,7 +3,8 @@ using UnityEngine;
 public class ButtonTrigger : MonoBehaviour
 {
 
-
+    [SerializeField] public AudioSource audioSrc;
+    [SerializeField] public AudioClip buttonClip;
     [SerializeField] public LevelManager level;
 
     private bool pressed;
@@ -20,7 +21,8 @@ public class ButtonTrigger : MonoBehaviour
             if (!pressed) { 
                 level.buttonsPressed++;
                 pressed = true;
-                Debug.Log("pressed");
+                audioSrc.PlayOneShot(buttonClip);
+                //Debug.Log("pressed");
             }
             
         }

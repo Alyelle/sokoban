@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "Level2")
         {
-            buttonsNeeded = 0;
+            buttonsNeeded = 3;
         }
         else if (sceneName == "Level3")
         {
@@ -41,14 +42,16 @@ public class LevelManager : MonoBehaviour
     {
         if (buttonsPressed == buttonsNeeded)
         {
+            //StartCoroutine(WinTimer);
+
             if (sceneName == "Level1")
             {
-                //buttonsPressed = 0;
+                buttonsPressed = 0;
                 SceneManager.LoadScene("Level2");
             }
             else if (sceneName == "Level2")
             {
-                //buttonsPressed = 0;
+                buttonsPressed = 0;
                 SceneManager.LoadScene("Level3");
             }
             else if (sceneName == "Level3")
@@ -60,6 +63,14 @@ public class LevelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             SceneManager.LoadScene(currentScene.name);
         }
+
+    }
+
+    private IEnumerator WinTimer()
+    {
+        float waitTime = 4f;
+
+        yield return new WaitForSeconds(waitTime);
 
     }
 }
