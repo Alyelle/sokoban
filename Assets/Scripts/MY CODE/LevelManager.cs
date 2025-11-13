@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
 
     private Scene currentScene;
     private string sceneName;
+
    
    
 
@@ -31,7 +32,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "Level3")
         {
-            buttonsNeeded = 0;
+            buttonsNeeded = 5;
         }
 
 
@@ -42,8 +43,6 @@ public class LevelManager : MonoBehaviour
     {
         if (buttonsPressed == buttonsNeeded)
         {
-            //StartCoroutine(WinTimer);
-
             if (sceneName == "Level1")
             {
                 buttonsPressed = 0;
@@ -56,21 +55,21 @@ public class LevelManager : MonoBehaviour
             }
             else if (sceneName == "Level3")
             {
-                //call function to restart game
+                buttonsPressed = 0;
+                SceneManager.LoadScene("Start");
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             SceneManager.LoadScene(currentScene.name);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("Start");
         }
 
     }
 
-    private IEnumerator WinTimer()
-    {
-        float waitTime = 4f;
-
-        yield return new WaitForSeconds(waitTime);
-
-    }
 }
